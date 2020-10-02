@@ -98,7 +98,8 @@ const store = new Vuex.Store({
         }
       }
       // Remove first item from dates since it will include backlocked stats
-      results.labels = dates.splice(0, 1);
+      dates.splice(0, 1);
+      results.labels = dates;
 
       let viewsAcc, commentsAcc, reactionsAcc;
 
@@ -109,7 +110,6 @@ const store = new Vuex.Store({
         for (let j = 0; j < state.articles.length; j++) {
           let current = state.articles[j];
           let index = current.dates.indexOf(dates[k]);
-          console.log(current.dates, current);
           if (index != -1) {
             viewsAcc = viewsAcc + current.viewsDaily[index];
             commentsAcc =
